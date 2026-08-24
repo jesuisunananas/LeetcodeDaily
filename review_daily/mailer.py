@@ -1,5 +1,6 @@
 from email.message import EmailMessage
 import os
+from pathlib import Path
 import smtplib
 from jinja2 import Environment, FileSystemLoader
 
@@ -10,15 +11,15 @@ class Gmail_Mailer:
         self.recipient_email = os.environ.get("RECIPIENT_EMAIL")
 
     def fill_and_send_email_template(self, links_for_problems):
-        env = Environment(loader=FileSystemLoader('.'))
+        BASE_DIR = Path(__file__).resolve().parent
+        TEMPLATES_DIR = BASE_DIR / "templates"
+        env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
         template = env.get_template('email_template.j2')
 
         data_to_fill = {}
         problems = []
-        for _ in range(len(links_for_problems)):
-            #data_to_fill[problem_number] = links_for_problems[i]
-            problems.append({"title" : links_for_problems[0], "url" : links_for_problems[1]})
-
+        for title, url in links_for_problems:
+            problems.append({"title" : title, "url" : url})
         data_to_fill["problems"] = problems
 
         html_content = template.render(data_to_fill)
@@ -32,7 +33,7 @@ class Gmail_Mailer:
         msg.add_alternative(html_content, subtype='html')
 
         try:
-            with smtplib.SMTP("://gmail.com", 587) as server:
+            with smtplib.SMTP("smtp.gmail.com", 587) as server:
                 server.starttls()
                 server.login(self.sender_email, self.sender_pass)
                 server.send_message(msg)

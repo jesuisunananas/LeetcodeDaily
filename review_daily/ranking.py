@@ -11,10 +11,10 @@ def rank_questions(poss_review_problems, num_needed):
     # Next Review Date
     # ID number
     scores = []
-    today = datetime.now()
+    today = datetime.now().date()
     # (0.3 or 0.6 or 0.9) * (0.3 or 0.6 or 0.9)
     for row in poss_review_problems:
-        score = row["Last Recall Confidence"].value * row["Last Recall Speed"].value
+        score = row["Last Recall Confidence"].mod * row["Last Recall Speed"].mod
         score *= row["NumConsecutiveRecalls"] / row["NumRecallAttempts"]
         day_difference = (today - row["Next Review Date"]).days
         percentage = 1 / (1 + 0.01 * day_difference)
