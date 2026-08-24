@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; line-height: 1.6; }
+        .container { padding: 20px; border: 1px solid #ddd; max-width: 600px; margin: 0 auto; }
+        .header { background: #007bff; color: #fff; padding: 15px; font-size: 20px; font-weight: bold; border-radius: 4px 4px 0 0; }
+        .problem-list { margin-top: 15px; padding-left: 20px; }
+        .problem-link { color: #007bff; text-decoration: none; font-weight: 500; }
+        .problem-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">Daily LeetCode Challenge</div>
+        <p>Hello,</p>
+        <p>Here are the five LeetCode problems assigned for your practice today:</p>
+        
+        <ul class="problem-list">
+        {% for problem in problems %}
+            <li>
+                <a class="problem-link" href="{{ problem.url }}" target="_blank">
+                    {{ problem.title }}
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+        
+        <p>Happy coding!</p>
+    </div>
+</body>
+</html>

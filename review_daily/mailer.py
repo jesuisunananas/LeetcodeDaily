@@ -14,9 +14,12 @@ class Gmail_Mailer:
         template = env.get_template('email_template.j2')
 
         data_to_fill = {}
-        for i in range(len(links_for_problems)):
-            problem_number = f"problem_{i}"
-            data_to_fill[problem_number] = links_for_problems[i]
+        problems = []
+        for _ in range(len(links_for_problems)):
+            #data_to_fill[problem_number] = links_for_problems[i]
+            problems.append({"title" : links_for_problems[0], "url" : links_for_problems[1]})
+
+        data_to_fill["problems"] = problems
 
         html_content = template.render(data_to_fill)
 
