@@ -2,14 +2,14 @@
 
 Motivation: This project really stemmed from problem fatigue while I was doing leetcode problems, I would find myself doing 10+ problems and then the next day I wouldn't do any. This was really built to integrate Leetcode as a daily, easily repeatable habit.
 
-System Design:
-[ Sheets API ] (using sheets.py)
-      |
-      v
-[Ranking Logic] (using ranking.py)
-      |
-      v
- [Mail Logic] (using mailer.py)
+System Design:  
+[ Sheets API ] (using sheets.py)  
+      |  
+      v  
+[Ranking Logic] (using ranking.py)  
+      |  
+      v  
+ [Mail Logic] (using mailer.py)  
 
 This system pulls rows from a sheets document, then ranks n previously reviewed problems and pulls m new problems. The n+m problems are sent over smtp, I fill out a jinja template with the links.
 
