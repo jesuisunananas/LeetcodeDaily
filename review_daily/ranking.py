@@ -58,7 +58,7 @@ def rank_questions_binary_search(poss_review_problems, num_needed):
 
 def first_n_new(all_rows, num_needed):
     new_problems = []
-    for row in all_rows:
+    for row in all_rows[1:]:
         if num_needed <= 0:
             break
         if not row['Last Recall Confidence']:

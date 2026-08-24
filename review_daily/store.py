@@ -34,7 +34,7 @@ class Sheets_Store:
         today = datetime.now().date()
         review_problems = []
 
-        for row in records:
+        for row in records[1:]:
             date_str = row.get("Next Review Date")
             if not date_str:
                 continue
