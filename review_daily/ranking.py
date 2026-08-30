@@ -17,7 +17,7 @@ def rank_questions(poss_review_problems, num_needed):
         score = row["Last Recall Confidence"].mod * row["Last Recall Speed"].mod
         score *= row["NumConsecutiveRecalls"] / row["NumRecallAttempts"]
         day_difference = (today - row["Next Review Date"]).days
-        percentage = 1 / (1 + 0.01 * day_difference)
+        percentage = 1 / (1 + 0.1 * day_difference)
         score *= percentage
         scores.append([score, row["ID"]])
 
