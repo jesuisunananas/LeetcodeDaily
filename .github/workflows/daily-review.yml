@@ -2,7 +2,7 @@ name: Send Daily Leetcode Problems
 
 on:
     schedule:
-        - cron: '0 12 * * *'
+        - cron: '21 5 * * *'
     workflow_dispatch:
 
 jobs:

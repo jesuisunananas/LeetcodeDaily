@@ -14,7 +14,7 @@ def main():
 def gather_links(review_p, new_p, records):
     links = []
     for p in review_p:
-        links.append((records[p[1]]["Problem Name"], records[p[1]]["Link"]))
+        links.append((records[p[1] - 1]["Problem Name"], records[p[1] - 1]["Link"]))
     for p in new_p:
         links.append((p["Problem Name"],p["Link"]))
 
